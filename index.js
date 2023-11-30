@@ -98,6 +98,8 @@ class TOTP {
   }
 }
 
-module.exports = {
-  TOTP,
-};
+if (typeof window === 'object') {
+  window.TOTP = TOTP;
+} else {
+  module.exports = { TOTP };
+}
