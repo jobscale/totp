@@ -1,9 +1,4 @@
-# totp
-
-## Examples
-
-```
-const { TOTP } = require('@jobscale/totp');
+const { TOTP } = require('..');
 
 const secret = [
   'JSXJPX6EY4BMPXI',
@@ -76,4 +71,3 @@ describe('test base32', () => {
     });
   });
 });
-```
