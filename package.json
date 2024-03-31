@@ -1,7 +1,7 @@
 {
   "name": "@jobscale/totp",
-  "version": "0.1.2",
-  "description": "Time-based One-Time Password",
+  "version": "0.2.0",
+  "description": "Time-based One-Time Password @jobscale/totp",
   "main": "index.js",
   "scripts": {
     "pretest": "npm run lint",

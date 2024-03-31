@@ -12,7 +12,7 @@ describe('test base32', () => {
     describe(`test step ${index}`, () => {
       it(`toBe step prompt window ${index}`, async () => {
         const totp = new TOTP();
-        const code = await totp.totp({
+        const code = await totp.auth({
           secret: value,
         });
         const res = await totp.verify({
@@ -25,7 +25,7 @@ describe('test base32', () => {
 
       it(`toBe step 1 window ${index}`, async () => {
         const totp = new TOTP();
-        const code = await totp.totp({
+        const code = await totp.auth({
           secret: value,
           time: Math.floor(Date.now() / 1000) + 30,
         });
@@ -39,7 +39,7 @@ describe('test base32', () => {
 
       it(`toBe step 2 window ${index}`, async () => {
         const totp = new TOTP();
-        const code = await totp.totp({
+        const code = await totp.auth({
           secret: value,
           time: Math.floor(Date.now() / 1000) + 60,
         });
@@ -53,7 +53,7 @@ describe('test base32', () => {
 
       it(`toBe step 3 window ${index}`, async () => {
         const totp = new TOTP();
-        const code = await totp.totp({
+        const code = await totp.auth({
           secret: value,
           time: Math.floor(Date.now() / 1000) + 90,
         });
