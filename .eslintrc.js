@@ -18,6 +18,7 @@ module.exports = {
       ImportDeclaration: { minProperties: 6, multiline: true, consistent: true },
       ExportDeclaration: { minProperties: 6, multiline: true, consistent: true },
     }],
+    'no-restricted-syntax': 'off',
   },
   env: {
     node: true,
