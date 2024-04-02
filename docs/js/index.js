@@ -19,11 +19,16 @@ Vue.createApp({
       if (this.token.length < 5) return;
       this.loading = true;
       logger.info('token', this.token);
-      window.totp.auth({ secret: this.token, window: 1 })
+      window.totp.auth({
+        secret: this.token,
+      })
       .then(code => {
         this.list = [code];
       })
-      .then(() => window.totp.auth({ secret: this.token }))
+      .then(() => window.totp.auth({
+        secret: this.token,
+        time: Math.floor(Date.now() / 1000) + 30,
+      }))
       .then(code => this.list.push(code))
       .catch(e => logger.error(e.message))
       .then(() => setTimeout(() => { this.loading = false; }, 1000));
