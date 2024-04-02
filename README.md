@@ -38,7 +38,7 @@ main();
 ## Lint
 
 ```
-npm run lint
+npm run lint --if-present
 ```
 
 ## Test
