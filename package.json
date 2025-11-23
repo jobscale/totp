@@ -2,23 +2,26 @@
   "name": "@jobscale/totp",
   "version": "0.2.1",
   "description": "Time-based One-Time Password @jobscale/totp",
-  "main": "index.js",
-  "scripts": {
-    "pretest": "npm run lint",
-    "lint": "eslint .",
-    "test": "jest --runInBand --coverage --collectCoverage"
-  },
   "keywords": [
     "totp",
     "authorizer"
   ],
   "author": "",
   "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run lint",
+    "lint": "eslint",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --detectOpenHandles --runInBand --coverage --collectCoverage"
+  },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^27.9.0",
-    "jest": "^29.7.0"
+    "@jobscale/eslint-plugin-standard": "^0.0.3",
+    "eslint": "^9.39.1",
+    "eslint-plugin-jest": "^29.2.1",
+    "jest": "^30.2.0"
+  },
+  "dependencies": {
+    "@jobscale/base32": "^0.2.0"
   }
 }

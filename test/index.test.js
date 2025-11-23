@@ -1,4 +1,4 @@
-const { TOTP } = require('..');
+import { Totp } from '../index.js';
 
 const list = [
   'JSXJPX6EY4BMPXI',
@@ -11,7 +11,7 @@ describe('test base32', () => {
   for (const [index, value] of list.entries()) {
     describe(`test step ${index}`, () => {
       it(`toBe step prompt window ${index}`, async () => {
-        const totp = new TOTP();
+        const totp = new Totp();
         const code = await totp.auth({
           secret: value,
         });
@@ -24,7 +24,7 @@ describe('test base32', () => {
       });
 
       it(`toBe step 1 window ${index}`, async () => {
-        const totp = new TOTP();
+        const totp = new Totp();
         const code = await totp.auth({
           secret: value,
           time: Math.floor(Date.now() / 1000) + 30,
@@ -38,7 +38,7 @@ describe('test base32', () => {
       });
 
       it(`toBe step 2 window ${index}`, async () => {
-        const totp = new TOTP();
+        const totp = new Totp();
         const code = await totp.auth({
           secret: value,
           time: Math.floor(Date.now() / 1000) + 60,
@@ -52,7 +52,7 @@ describe('test base32', () => {
       });
 
       it(`toBe step 3 window ${index}`, async () => {
-        const totp = new TOTP();
+        const totp = new Totp();
         const code = await totp.auth({
           secret: value,
           time: Math.floor(Date.now() / 1000) + 90,
