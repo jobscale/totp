@@ -15,7 +15,9 @@
     "lint": "eslint",
     "test": "node --experimental-vm-modules node_modules/.bin/jest --detectOpenHandles --runInBand --coverage --collectCoverage"
   },
-  "pre-commit": ["test"],
+  "pre-commit": [
+    "test"
+  ],
   "dependencies": {
     "@jobscale/base32": "^0.2.0"
   },
