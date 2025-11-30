@@ -1,6 +1,6 @@
 {
   "name": "@jobscale/totp",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Time-based One-Time Password @jobscale/totp",
   "keywords": [
     "totp",
