@@ -51,7 +51,7 @@ export class Totp {
     const code = (digest[offset] & 0x7f) << 24
       | (digest[offset + 1] & 0xff) << 16
       | (digest[offset + 2] & 0xff) << 8
-      | (digest[offset + 3] & 0xff);
+      | digest[offset + 3] & 0xff;
     const strCode = new Array(digits + 1).join('0') + code.toString(10);
     return strCode.slice(-digits);
   }
@@ -60,7 +60,7 @@ export class Totp {
     const opt = { ...options };
     if (!opt.counter) {
       const step = options.step || 30;
-      const time = options.time ? (options.time * 1000) : Date.now();
+      const time = options.time ? options.time * 1000 : Date.now();
       const epoch = options.epoch ? options.epoch * 1000 : 0;
       opt.counter = Math.floor((time - epoch) / step / 1000);
     }
@@ -74,9 +74,9 @@ export class Totp {
     if (!window) return false;
     if (!opt.step) opt.step = 30;
     for (let i = 1; i <= window; i++) {
-      opt.time = Math.floor(Date.now() / 1000) + (opt.step * i);
+      opt.time = Math.floor(Date.now() / 1000) + opt.step * i;
       if (code === await this.auth(opt)) return true;
-      opt.time = Math.floor(Date.now() / 1000) + (opt.step * -i);
+      opt.time = Math.floor(Date.now() / 1000) + opt.step * -i;
       if (code === await this.auth(opt)) return true;
     }
     return false;
