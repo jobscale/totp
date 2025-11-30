@@ -73,10 +73,11 @@ export class Totp {
     if (code === await this.auth(opt)) return true;
     if (!window) return false;
     if (!opt.step) opt.step = 30;
+    const baseTime = opt.time || Math.floor(Date.now() / 1000);
     for (let i = 1; i <= window; i++) {
-      opt.time = Math.floor(Date.now() / 1000) + opt.step * i;
+      opt.time = baseTime + opt.step * i;
       if (code === await this.auth(opt)) return true;
-      opt.time = Math.floor(Date.now() / 1000) + opt.step * -i;
+      opt.time = baseTime + opt.step * -i;
       if (code === await this.auth(opt)) return true;
     }
     return false;
